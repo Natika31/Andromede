@@ -1,6 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="160dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Evenements"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="361dp"
+        android:layout_height="97dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="138dp"
+            android:layout_height="39dp"
+            android:text="Pollutec"
+            android:textSize="21dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:text="21/05/2018 12:00  "
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="113dp"
+            android:layout_height="32dp"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:text="Montpellier"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="129dp"
+            android:layout_height="28dp"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="Arena"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/event1"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_column="5"
+            android:layout_row="0"
+            android:onClick="Subscribe_event1"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="8dp"
+            tools:layout_editor_absoluteX="413dp"
+            tools:layout_editor_absoluteY="49dp" />
+
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout2"
+        android:layout_width="369dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="236dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="141dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="10dp"
+            android:text="Start'n'Meet Up"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_marginLeft="10dp"
+            android:layout_row="1"
+
+            android:text="Toulouse"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_marginLeft="2dp"
+            android:layout_row="0"
+            android:text="02/10/2018 18:00"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="Quai des savoirs"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/event2"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_column="5"
+            android:layout_marginRight="6dp"
+            android:layout_row="0"
+            android:onClick="Subscribe_event2"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="8dp"
+            tools:layout_editor_absoluteX="413dp"
+            tools:layout_editor_absoluteY="49dp" />
+    </GridLayout>
 
 </android.support.constraint.ConstraintLayout>
