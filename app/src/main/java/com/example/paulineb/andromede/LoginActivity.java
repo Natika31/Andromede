@@ -40,20 +40,32 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-/**
- * A login screen that offers login via email/password.
- */
 public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //initialisation
+        JSONObject participantsE2 = null;
+        JSONObject participantsE1 = null;
+        try {
+            participantsE2 = HandleFiles.read(this, "participantsE2.json");
+            participantsE1 = HandleFiles.read(this, "participantsE1.json");
+            if (participantsE1 == null) {
+                HandleFiles.create(this, "participantsE1.json", new JSONObject("").toString());
+            }
+            if (participantsE2 == null) {
+                HandleFiles.create(this, "participantsE2.json", new JSONObject("").toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
         boolean isFilePresent = HandleFiles.isFilePresent(this, "users.json");
 
-        if(isFilePresent) {
-            String jsonString = HandleFiles.read(this, "users.json");
-        } else {
+        if(!isFilePresent) {
             JSONObject orga = new JSONObject();
             JSONObject jeandupont = new JSONObject();
             try {
@@ -77,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -88,10 +99,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void connect(View view) throws JSONException {
-        JSONObject users = new JSONObject(HandleFiles.read(this, "users.json"));
+        JSONObject users = HandleFiles.read(this, "users.json");
         Log.e("USERS", users.toString());
 
-        //TODO: Récupérer l'adresse mail de la vue
+        // Récupérer l'adresse mail de la vue
         TextView em = (TextView) findViewById (R.id.email);
         String email = em.getText().toString();
 
@@ -105,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
 
         } else {
-            //TODO: Afficher champ erreur
+            //Afficher champ erreur
             Log.e("CONNECT", "KO");
             TextView error = (TextView) findViewById(R.id.error_connect);
             error.setText(R.string.error_account_doesnt_exists);

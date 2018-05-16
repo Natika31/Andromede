@@ -23,7 +23,7 @@ public class CreateUserActivity extends AppCompatActivity {
     }
 
     public void goToEvents(View view) throws JSONException, IOException {
-        JSONObject users = new JSONObject(HandleFiles.read(this, "users.json"));
+        JSONObject users = HandleFiles.read(this, "users.json");
 
         Log.e("USERS", users.toString());
 
@@ -62,16 +62,12 @@ public class CreateUserActivity extends AppCompatActivity {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else {
-            Log.e("ERREUR", "lo");
             //TODO: Afficher message d'erreur comme quoi le user existe déjà, prendre une autre adresse mail
             TextView alert = (TextView) findViewById(R.id.alert);
             alert.setText(R.string.error_account_already_exists);
             alert.setTextColor(getResources().getColor(R.color.rougeAlert));
 
         }
-
-
-
 
     }
 

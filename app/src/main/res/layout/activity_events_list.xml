@@ -87,6 +87,18 @@
             tools:layout_editor_absoluteX="413dp"
             tools:layout_editor_absoluteY="49dp" />
 
+        <TextView
+            android:id="@+id/participantsE1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="5"
+            android:layout_row="1"
+            android:textSize="11dp"
+            android:text="Participants"
+            android:visibility="invisible"
+            android:textColor="@color/colorPrimary"
+            android:onClick="goParticipantsE1"/>
+
 
     </GridLayout>
 
@@ -117,7 +129,6 @@
             android:layout_column="0"
             android:layout_marginLeft="10dp"
             android:layout_row="1"
-
             android:text="Toulouse"
             android:textSize="19dp" />
 
@@ -138,7 +149,9 @@
             android:layout_column="1"
             android:layout_row="1"
             android:text="Quai des savoirs"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="156dp"
+            tools:layout_editor_absoluteY="275dp" />
 
         <Button
             android:id="@+id/event2"
@@ -154,6 +167,18 @@
             android:textSize="8dp"
             tools:layout_editor_absoluteX="413dp"
             tools:layout_editor_absoluteY="49dp" />
+
+        <TextView
+            android:id="@+id/participantsE2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="5"
+            android:layout_row="1"
+            android:textSize="11dp"
+            android:text="Participants"
+            android:visibility="invisible"
+            android:textColor="@color/colorPrimary"
+            android:onClick="goParticipantsE2"/>
     </GridLayout>
 
 </android.support.constraint.ConstraintLayout>

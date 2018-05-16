@@ -31,6 +31,18 @@ public class User {
         this.organisor=organisor;
     }
 
+    public User (JSONObject user) throws JSONException {
+        this.company=user.getString("company");
+        this.title=user.getString("title");
+        this.firstname=user.getString("firstname");
+        this.lastname=user.getString("lastname");
+        this.cp=user.getInt("cp");
+        this.city=user.getString("city");
+        this.address=user.getString("address");
+        this.email=user.getString("email");
+        this.organisor=user.getBoolean("organisor");
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -111,6 +123,7 @@ public class User {
         data.put("title", this.getTitle());
         data.put("cp", this.getCp());
         data.put("city", this.getCity());
+        data.put("address", this.getAddress());
         data.put("email", this.getEmail());
         data.put("organisor", this.getOrganisor());
 

@@ -2,6 +2,9 @@ package com.example.paulineb.andromede;
 
 import android.content.Context;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,7 +15,7 @@ import java.io.InputStreamReader;
 
 class HandleFiles {
 
-     static String read(Context context, String fileName) {
+     static JSONObject read(Context context, String fileName) throws JSONException {
         try {
             FileInputStream fis = context.openFileInput(fileName);
             InputStreamReader isr = new InputStreamReader(fis);
@@ -22,7 +25,7 @@ class HandleFiles {
             while ((line = bufferedReader.readLine()) != null) {
                 sb.append(line);
             }
-            return sb.toString();
+            return new JSONObject(sb.toString());
         } catch (FileNotFoundException fileNotFound) {
             return null;
         } catch (IOException ioException) {

@@ -26,8 +26,8 @@
         </activity>
         <activity android:name=".EventsListActivity">
         </activity>
-
-
+        <activity android:name=".ParticipantsListActivity">
+        </activity>
 
     </application>
 
