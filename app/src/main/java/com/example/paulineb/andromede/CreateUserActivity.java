@@ -54,15 +54,15 @@ public class CreateUserActivity extends AppCompatActivity {
         User newUser = new User (company, title, firstname, lastname, postalcode, city, address,email, false);
 
         if (!users.has(newUser.getEmail())) {
-            //TODO: verifier si le new user n'existe pas deja
             users.put(newUser.getEmail(), newUser.getAllData());
             Log.e("creation", users.toString());
             HandleFiles.create(this, "users.json", users.toString());
 
+            //TODO: envoyer email de confirmation de creation de compte
+
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else {
-            //TODO: Afficher message d'erreur comme quoi le user existe déjà, prendre une autre adresse mail
             TextView alert = (TextView) findViewById(R.id.alert);
             alert.setText(R.string.error_account_already_exists);
             alert.setTextColor(getResources().getColor(R.color.rougeAlert));

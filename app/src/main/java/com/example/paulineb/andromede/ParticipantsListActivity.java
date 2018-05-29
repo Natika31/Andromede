@@ -27,26 +27,25 @@ public class ParticipantsListActivity extends AppCompatActivity {
             JSONObject listParticipants = new JSONObject(participants);
             String participantsString = "";
 
+            int n=0;
             for (Iterator iterator = listParticipants.keys(); iterator.hasNext();) {
                 Object cle = iterator.next();
                 Object val = listParticipants.get(String.valueOf(cle));
                 Log.e("qui es tu ?", val.toString());
                 JSONObject participant = new JSONObject(val.toString());
                 User user = new User (participant);
-                participantsString += user.getLastname() +" "+ user.getFirstname() + "      ,";
-
+                participantsString += user.getLastname() +"\t"+ user.getFirstname() + "\n";
+                n++;
             }
 
             TextView ppp = (TextView) findViewById(R.id.participants);
             ppp.setText(participantsString);
 
+            TextView nbinscrits = (TextView) findViewById(R.id.nbinscrits);
+            nbinscrits.setText("Nombre d'inscrits : " + n );
+
             Log.e("aaa", participantsString);
 
-           /* for () {
-                participantsString += participant.get("Nom");
-                participantsString += participant.get("Prenom");
-            }
-            */
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -55,3 +54,4 @@ public class ParticipantsListActivity extends AppCompatActivity {
     }
 
 }
+

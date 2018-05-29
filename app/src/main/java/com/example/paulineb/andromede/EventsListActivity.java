@@ -1,14 +1,17 @@
 package com.example.paulineb.andromede;
 import android.content.Intent;
+import android.net.MailTo;
+import com.example.paulineb.andromede.GMailSender;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 
 public class EventsListActivity extends AppCompatActivity {
@@ -26,7 +29,7 @@ public class EventsListActivity extends AppCompatActivity {
             //transformer en user
             User user = new User (currentUser);
 
-            if (user.getOrganisor() == true) {
+            if (user.getOrganisor()) {
                 //si c'est l'organisateur
 
                 //on afficher la possibilite d'annuler l'evt
@@ -54,13 +57,12 @@ public class EventsListActivity extends AppCompatActivity {
     }
 
 
-    public void Subscribe_event1 (View view) throws JSONException {
-
+    public void Subscribe_event1 (View view) throws JSONException, Exception {
         Button e1 = (Button) findViewById(R.id.event1);
 
         if (e1.getText().equals("Annuler")) {
             e1.setText(R.string.deleted);
-            //envoyer un mail d'annulation aux participants
+            //TODO: envoyer mail annulation evenement
         } else {
             //ajouter aux participants
             JSONObject currentUser = HandleFiles.read(this, "currentUser.json");
@@ -78,18 +80,35 @@ public class EventsListActivity extends AppCompatActivity {
                 HandleFiles.create(this, "participantsE1.json", participantsE1.toString());
             }
             e1.setText(R.string.subscribed);
-            //envoyer un mail d'inscription
+
+            //TODO: envoyer mail inscription
+            new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    try {
+                        GMailSender sender = new GMailSender("jd.eventconnect@gmail.com",
+                                "jd31jd31jd31");
+                        sender.sendMail("Hello from JavaMail", "Body from JavaMail",
+                                "jd.eventconnect@gmail.com", "jules.tilise@gmail.com");
+                    } catch (Exception e) {
+                        Log.e("SendMail", e.getMessage(), e);
+                    }
+                }
+
+            }).start();
         }
 
     }
 
-    public void Subscribe_event2 (View view) throws JSONException {
+    public void Subscribe_event2 (View view) throws JSONException, Exception {
 
         Button e2 = (Button) findViewById(R.id.event2);
         //si c'est l'organisateur
         if (e2.getText().equals("Annuler")) {
             e2.setText(R.string.deleted);
-            //envoyer un mail d'annulation aux participants
+            //TODO : envoyer mail annulation
+
         } else {
             //si c'est un utilisateur
             e2.setText(R.string.subscribed);
@@ -99,7 +118,8 @@ public class EventsListActivity extends AppCompatActivity {
             JSONObject participantsE2 = HandleFiles.read(this, "participantsE2.json");
             participantsE2.put(user.getEmail(), user.getAllData().toString()); // idem currentUser.ToString()
             HandleFiles.create(this, "participantsE2.json", participantsE2.toString());
-            //envoyer un mail d'inscription
+            //TODO: envoyer mail inscription
+
         }
 
     }

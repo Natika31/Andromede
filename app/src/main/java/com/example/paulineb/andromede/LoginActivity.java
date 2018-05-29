@@ -76,10 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                 jeandupont.put("address", "Route de Narbonne");
                 jeandupont.put("cp", 31000);
                 jeandupont.put("city", "Toulouse");
-                jeandupont.put("email","jeandupont@gmail.com");
+                jeandupont.put("email","jd.eventconnect@gmail.com");
                 jeandupont.put("organisor", true);
 
-                orga.put("jeandupont@gmail.com", jeandupont);
+                orga.put("jd.eventconnect@gmail.com", jeandupont);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
